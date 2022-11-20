@@ -28,15 +28,16 @@ class _BMIScreenState extends State<BMIScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                              Icons.ac_unit,
-                              size: 70.0,
+                          Image(
+                            image: AssetImage('assets/images/female.png'),
+                            width: 90.0,
+                            height: 90.0,
                           ),
                           SizedBox(
                             height: 15.0 ,
                           ),
                           Text(
-                            'MALE',
+                            'FEMALE',
                              style: TextStyle(
                                fontSize: 25.0,
                                fontWeight: FontWeight.bold,
@@ -62,9 +63,10 @@ class _BMIScreenState extends State<BMIScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.ac_unit,
-                              size: 70.0,
+                            Image(
+                              image: AssetImage('assets/images/male.png'),
+                              width: 90.0,
+                              height: 90.0,
                             ),
                             SizedBox(
                               height: 15.0 ,
@@ -107,7 +109,7 @@ class _BMIScreenState extends State<BMIScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Height',
+                      'HEIGHT',
                       style: TextStyle(
                         fontSize: 30.0,
                         fontWeight: FontWeight.bold,
@@ -142,7 +144,7 @@ class _BMIScreenState extends State<BMIScreen> {
                       min: 100,
                       max: 220,
                       onChanged: (value) {
-                        print(value);
+                        print(value.round());
                       }
                     ),
                   ],
@@ -151,8 +153,104 @@ class _BMIScreenState extends State<BMIScreen> {
             ),
           ),
           Expanded(
-            child: Container(
-              color: Colors.blue,
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'AGE',
+                            style: TextStyle(
+                              fontSize: 25.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '180',
+                            style: TextStyle(
+                              fontSize: 40.0,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              FloatingActionButton(
+                                child: Icon(Icons.add),
+                                mini: true,
+                                onPressed: (){
+                                }
+                              ),
+                              FloatingActionButton(
+                                  child: Icon(Icons.remove),
+                                  mini: true,
+                                  onPressed: (){
+                                  }
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20.0,
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'AGE',
+                            style: TextStyle(
+                              fontSize: 25.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '180',
+                            style: TextStyle(
+                              fontSize: 40.0,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              FloatingActionButton(
+                                  child: Icon(Icons.add),
+                                  mini: true,
+                                  onPressed: (){
+                                  }
+                              ),
+                              FloatingActionButton(
+                                  child: Icon(Icons.remove),
+                                  mini: true,
+                                  onPressed: (){
+                                  }
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           Container(
@@ -161,7 +259,7 @@ class _BMIScreenState extends State<BMIScreen> {
               onPressed: (){
 
                 },
-              color: Colors.red,
+              color: Colors.blue,
               height: 50.0,
               child: Text(
                 'CALCULATE',

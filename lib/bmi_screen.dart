@@ -3,11 +3,16 @@ import 'package:flutter/material.dart';
 
 class BMIScreen extends StatefulWidget {
 
+
+
   @override
   State<BMIScreen> createState() => _BMIScreenState();
 }
 
 class _BMIScreenState extends State<BMIScreen> {
+
+  bool isMale = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,31 +29,38 @@ class _BMIScreenState extends State<BMIScreen> {
               child: Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image(
-                            image: AssetImage('assets/images/female.png'),
-                            width: 90.0,
-                            height: 90.0,
+                    child: GestureDetector(
+                      onTap: (){
+                        setState(() {
+                            isMale = false;
+                        });
+                      },
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image(
+                              image: AssetImage('assets/images/female.png'),
+                              width: 90.0,
+                              height: 90.0,
+                            ),
+                            SizedBox(
+                              height: 15.0 ,
+                            ),
+                            Text(
+                              'FEMALE',
+                               style: TextStyle(
+                                 fontSize: 25.0,
+                                 fontWeight: FontWeight.bold,
+                               ),
+                            ),
+                          ],
+                        ),
+                        decoration: BoxDecoration(
+                          color: !isMale ? Colors.blue : Colors.grey,
+                          borderRadius: BorderRadius.circular(
+                              20.0,
                           ),
-                          SizedBox(
-                            height: 15.0 ,
-                          ),
-                          Text(
-                            'FEMALE',
-                             style: TextStyle(
-                               fontSize: 25.0,
-                               fontWeight: FontWeight.bold,
-                             ),
-                          ),
-                        ],
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(
-                            20.0,
                         ),
                       ),
                     ),
@@ -57,34 +69,41 @@ class _BMIScreenState extends State<BMIScreen> {
                     width: 20.0,
                   ),
                   Expanded(
-                    child: Container(
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image(
-                              image: AssetImage('assets/images/male.png'),
-                              width: 90.0,
-                              height: 90.0,
-                            ),
-                            SizedBox(
-                              height: 15.0 ,
-                            ),
-                            Text(
-                              'MALE',
-                              style: TextStyle(
-                                fontSize: 25.0,
-                                fontWeight: FontWeight.bold,
+                    child: GestureDetector(
+                      onTap: (){
+                        setState(() {
+                          isMale = true;
+                        });
+                      },
+                      child: Container(
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image(
+                                image: AssetImage('assets/images/male.png'),
+                                width: 90.0,
+                                height: 90.0,
                               ),
-                            ),
-                          ],
+                              SizedBox(
+                                height: 15.0 ,
+                              ),
+                              Text(
+                                'MALE',
+                                style: TextStyle(
+                                  fontSize: 25.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(
-                          20.0,
+                        decoration: BoxDecoration(
+                          color: isMale ? Colors.blue : Colors.grey,
+                          borderRadius: BorderRadius.circular(
+                            20.0,
+                          ),
                         ),
                       ),
                     ),

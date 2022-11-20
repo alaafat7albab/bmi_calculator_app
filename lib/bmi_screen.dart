@@ -12,6 +12,9 @@ class BMIScreen extends StatefulWidget {
 class _BMIScreenState extends State<BMIScreen> {
 
   bool isMale = true;
+  double height = 150;
+  int  weight = 60;
+  int  age = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +146,7 @@ class _BMIScreenState extends State<BMIScreen> {
                       textBaseline: TextBaseline.alphabetic,
                       children: [
                         Text(
-                          '180',
+                          '${height.round()}',
                           style: TextStyle(
                             fontSize: 40.0,
                             fontWeight: FontWeight.w900,
@@ -159,11 +162,13 @@ class _BMIScreenState extends State<BMIScreen> {
                       ],
                     ),
                     Slider(
-                      value: 150,
+                      value: height,
                       min: 100,
                       max: 220,
                       onChanged: (value) {
-                        print(value.round());
+                        setState(() {
+                           height = value;
+                        });
                       }
                     ),
                   ],
@@ -187,14 +192,14 @@ class _BMIScreenState extends State<BMIScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'AGE',
+                            'Weight',
                             style: TextStyle(
                               fontSize: 25.0,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
-                            '180',
+                            '$weight',
                             style: TextStyle(
                               fontSize: 40.0,
                               fontWeight: FontWeight.w900,
@@ -207,12 +212,18 @@ class _BMIScreenState extends State<BMIScreen> {
                                 child: Icon(Icons.add),
                                 mini: true,
                                 onPressed: (){
+                                  setState(() {
+                                    weight++;
+                                  });
                                 }
                               ),
                               FloatingActionButton(
                                   child: Icon(Icons.remove),
                                   mini: true,
                                   onPressed: (){
+                                    setState(() {
+                                      weight--;
+                                    });
                                   }
                               ),
                             ],
@@ -241,7 +252,7 @@ class _BMIScreenState extends State<BMIScreen> {
                             ),
                           ),
                           Text(
-                            '180',
+                            '$age',
                             style: TextStyle(
                               fontSize: 40.0,
                               fontWeight: FontWeight.w900,
@@ -254,12 +265,18 @@ class _BMIScreenState extends State<BMIScreen> {
                                   child: Icon(Icons.add),
                                   mini: true,
                                   onPressed: (){
+                                    setState(() {
+                                      age++;
+                                    });
                                   }
                               ),
                               FloatingActionButton(
                                   child: Icon(Icons.remove),
                                   mini: true,
                                   onPressed: (){
+                                    setState(() {
+                                      age--;
+                                    });
                                   }
                               ),
                             ],

@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:bmi_calculator_app/bmi_result_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -209,6 +212,7 @@ class _BMIScreenState extends State<BMIScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FloatingActionButton(
+                                heroTag: 'weight--',
                                 child: Icon(Icons.add),
                                 mini: true,
                                 onPressed: (){
@@ -218,6 +222,7 @@ class _BMIScreenState extends State<BMIScreen> {
                                 }
                               ),
                               FloatingActionButton(
+                                  heroTag: 'weight--',
                                   child: Icon(Icons.remove),
                                   mini: true,
                                   onPressed: (){
@@ -262,6 +267,7 @@ class _BMIScreenState extends State<BMIScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FloatingActionButton(
+                                  heroTag: 'age++',
                                   child: Icon(Icons.add),
                                   mini: true,
                                   onPressed: (){
@@ -271,6 +277,7 @@ class _BMIScreenState extends State<BMIScreen> {
                                   }
                               ),
                               FloatingActionButton(
+                                  heroTag: 'age--',
                                   child: Icon(Icons.remove),
                                   mini: true,
                                   onPressed: (){
@@ -278,6 +285,7 @@ class _BMIScreenState extends State<BMIScreen> {
                                       age--;
                                     });
                                   }
+
                               ),
                             ],
                           ),
@@ -293,7 +301,17 @@ class _BMIScreenState extends State<BMIScreen> {
             width: double.infinity,
             child: MaterialButton(
               onPressed: (){
-
+                  double result = weight / pow(height /100, 2);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BMIResult(
+                            result: result.round(),
+                            age: age,
+                            isMale: isMale,
+                          ),
+                      ),
+                  );
                 },
               color: Colors.blue,
               height: 50.0,
